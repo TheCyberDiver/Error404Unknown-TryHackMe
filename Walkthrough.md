@@ -47,3 +47,7 @@
 - File upload vulnerabilities are so common because they are difficult to defend against.
 - In this example you can upload a generic PHP reverse shell and finish the box. No protections are in place and the server executes uploads.
 - If file upload has protections follow hacktricks to circumvent them.
+
+
+Credits:
+Room testers = [Avo-Catto]
