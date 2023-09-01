@@ -7,7 +7,7 @@
    - ``` $query = "SELECT username, password FROM users WHERE username = '$userInputUsername' AND password = '$userInputPassword'"; ```
    - What about: ``` "SELECT username, password FROM users WHERE username = ''OR 1=1-- ' AND password = '$userInputPassword'"; ```
    - The above ends the query early and makes it return true (1=1, which will always evaluate to true) and then comments out the remainder. Inturn this logs you in as the first user in the database(Admin).
-   - ``` "SELECT username, password FROM users WHERE username = 'Jackson'-- ' AND password = '$userInputPassword'";
+   - ``` "SELECT username, password FROM users WHERE username = 'Jackson'-- ' AND password = '$userInputPassword'"; ```
    - The above will make the username Jackson and then comment out the remainder. As long as Jackson is a valid user you will be logged in.
  
 ## Task 3 - Insecure Direct Object Reference (IDOR)
