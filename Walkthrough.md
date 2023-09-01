@@ -20,42 +20,53 @@
 - When searching for MFLACs it is ideal to be working with mulitple user roles that are different. For example, a standard user and an admin. The goal is to GAIN functionality that you shouldn't have such as an admin page. This can be through forced browsing or submitting requests for priveleged functions replacing the admins cookies with the standard users.
     - In this instance the admin panel is hidden from every user in the User Interface. Thus doing a quick gobuster scan will reveal this page with no authorization checks in place. Sometimes your burp target will find hidden locations that are in the html.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Task 5 - SQL injection UNION based
+### Fuzzing
+- Again starting with small payloads and building on them becomes crucial here.
 - For example in fields that search or ingest strings, try to verify. This step will help you narrow down the type of database so you can form your payload to fit it.
        ```ad'+'min or ad' 'min or ad'||'min```
+           - Doing this we also see that it still searchs for the user even with those extra characters added.
        - Now that this step has been done review portswiggers cheatsheet. Depending on what worked it is possible to figure out a rough idea of what type of database is in use. This isn't as useful for auth bypass but it is for many other scenarios.
-       - 
+       - Since this is a UNION based injection we need to find out how many columns we need to match and the data type that corresponds to them.
+           -```'UNION SELECT NULL-- ```
+                 - This will do the trick, a majority of the time you have to keep adding until you no longer recieve an error. In this case its only 1 column (users)
+        - We can now finish the query and grab the database version
+           ```'UNION SELECT @@version-- ```
+        - I knew to use @@version because on initial fuzzing I saw that ad' 'min worked for concat and --space worked for commenting query which is MySQL.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
