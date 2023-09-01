@@ -34,6 +34,12 @@
            ```'UNION SELECT @@version-- ```
         - I knew to use @@version because on initial fuzzing I saw that ad' 'min worked for concat and --space worked for commenting query which is MySQL.
 
+  ## Task 6 - Cross Site Scripting
+  ### Fuzzing
+  - When trying to find XSS using your dev tools is crucial in finding the context that your supplied inputs are being used.
+  - On the review.php page insert test1, test2, test3, test4 for each of the inputs and submit it. In the dev tools search for each keyword(test1 for example) and find each spot that it is being echoed. Now that you see how your inputs are being used you can form your payload off of that.
+  - In the subject POST parameter insert a generic payload like ```<img src=x onerror=alert(1)>``` and observe the successful alert.
+
 
 
 
