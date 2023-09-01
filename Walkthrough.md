@@ -40,6 +40,12 @@
   - On the review.php page insert test1, test2, test3, test4 for each of the inputs and submit it. In the dev tools search for each keyword(test1 for example) and find each spot that it is being echoed. Now that you see how your inputs are being used you can form your payload off of that.
   - In the subject POST parameter insert a generic payload like ```<img src=x onerror=alert(1)>``` and observe the successful alert.
 
+## Task 7 - File Upload
+### Exploitation
+- File upload vulnerabilities are so common because they are difficult to defend against.
+- In this example you can upload a generic PHP reverse shell and finish the box. No protections are in place and the server executes uploads.
+- If file upload has protections follow hacktricks to circumvent them.
+
 
 
 
